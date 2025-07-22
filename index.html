@@ -3,187 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pedido de Almoxarifado</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f2f2f2;
-    }
-    header {
-      background-color: #003366;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    header img {
-      height: 50px;
-      vertical-align: middle;
-      margin-right: 15px;
-    }
-    .container {
-      display: flex;
-      max-width: 1200px;
-      margin: 30px auto;
-      background-color: #fff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .sidebar {
-      background-color: #e6e6e6;
-      padding: 20px;
-      width: 30%;
-    }
-    .sidebar h3 {
-      margin-top: 0;
-    }
-    .form-section {
-      padding: 30px;
-      width: 70%;
-    }
-    .form-section h2 {
-      margin-top: 0;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-    }
-    input, select {
-      width: 90%;
-      padding: 8px;
-      margin-top: 5px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-    .button-container {
-      margin-top: 20px;
-      text-align: right;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: #003366;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #005599;
-    }
-    .date-info {
-      font-size: 0.9em;
-      color: #666;
-      margin-top: 10px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-    .add-row {
-      margin-top: 10px;
-      background-color: #007acc;
-      color: #fff;
-      border: none;
-      padding: 8px 12px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    .add-row:hover {
-      background-color: #005fa3;
-    }
-  </style>
+  <title>Painel do Administrador - Almoxarifado</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
     <img src="logo.png" alt="Logo">
-    <span>Sistema de Pedidos - Almoxarifado</span>
+    <span>Painel do Administrador - Pedidos de Almoxarifado</span>
   </header>
 
   <div class="container">
-    <div class="sidebar">
-      <h3>Instruções</h3>
-      <p>Preencha os campos com atenção. Você pode adicionar múltiplos produtos clicando em "Adicionar Produto".</p>
-      <p>Todos os campos são obrigatórios.</p>
-      <hr>
-      <h4>Data da Solicitação</h4>
-      <p class="date-info" id="data-solicitacao">--/--/----</p>
-    </div>
-
-    <div class="form-section">
-      <h2>Formulário de Pedido</h2>
-      <form id="pedidoForm">
-        <label for="nome">Nome do Solicitante:</label>
-        <input type="text" id="nome" name="nome" required>
-
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="setor">Setor:</label>
-        <input type="text" id="setor" name="setor" required>
-
-        <label for="data-prevista">Data Prevista para Uso:</label>
-        <input type="date" id="data-prevista" name="data-prevista" required>
-
-        <h3>Produtos Solicitados</h3>
-        <table id="produtos">
-          <thead>
-            <tr>
-              <th>Código do Produto</th>
-              <th>Descrição</th>
-              <th>Quantidade</th>
-              <th>Ação</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="text" name="codigo[]" required></td>
-              <td><input type="text" name="descricao[]" required></td>
-              <td><input type="number" name="quantidade[]" required></td>
-              <td><button type="button" onclick="removerLinha(this)">Remover</button></td>
-            </tr>
-          </tbody>
-        </table>
-        <button type="button" class="add-row" onclick="adicionarLinha()">+ Adicionar Produto</button>
-
-        <div class="button-container">
-          <button type="submit">Enviar Pedido</button>
-        </div>
-      </form>
-    </div>
+    <h2>Pedidos Recebidos</h2>
+    <table id="tabela-pedidos">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Solicitante</th>
+          <th>E-mail</th>
+          <th>Setor</th>
+          <th>Data Prevista</th>
+          <th>Código</th>
+          <th>Descrição</th>
+          <th>Quantidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="8">Carregando dados...</td></tr>
+      </tbody>
+    </table>
   </div>
 
-  <script>
-    const hoje = new Date();
-    const formatado = hoje.toLocaleDateString('pt-BR');
-    document.getElementById("data-solicitacao").textContent = formatado;
-
-    function adicionarLinha() {
-      const tabela = document.querySelector("#produtos tbody");
-      const novaLinha = document.createElement("tr");
-      novaLinha.innerHTML = `
-        <td><input type="text" name="codigo[]" required></td>
-        <td><input type="text" name="descricao[]" required></td>
-        <td><input type="number" name="quantidade[]" required></td>
-        <td><button type="button" onclick="removerLinha(this)">Remover</button></td>
-      `;
-      tabela.appendChild(novaLinha);
-    }
-
-    function removerLinha(botao) {
-      const linha = botao.parentElement.parentElement;
-      linha.remove();
-    }
-  </script>
+  <script src="js/script.js"></script>
 </body>
 </html>
