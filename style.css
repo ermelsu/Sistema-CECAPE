@@ -1,0 +1,213 @@
+
+/* ========================== */
+/*       CSS DO LOGIN         */
+/* ========================== */
+/* CSS DO LOGIN */
+
+
+/* Reset de margens e bordas */
+
+/* Reset de margens e bordas */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo com altura total */
+html, body {
+  height: 100%;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabeçalho */
+header {
+  background-color: #003366;
+  color: white;
+  padding: 10px 0;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centraliza logo + texto */
+  gap: 10px;
+}
+
+.header-content .logo {
+  height: 40px;
+}
+
+.header-content h1 {
+  font-size: 18px;
+}
+
+/* Rodapé */
+footer {
+  background-color: #003366;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: auto;
+}
+
+/* Container de login centralizado */
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-container {
+  background-color: white;
+  padding: 40px 60px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  min-width: 400px; /* aumento aqui */
+  max-width: 500px;
+  width: 100%;
+}
+
+.login-container h2 {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.login-container label {
+  display: block;
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-container button {
+  margin-top: 15px;
+  width: 100%;
+  background-color: #003366;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #002855;
+}
+
+/* ========================== */
+/*    CSS DO INDEX (FORM)     */
+/* ========================== */
+.container {
+  background-color: #fff;
+  padding: 40px;
+  margin: 40px auto;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #00509e;
+}
+
+table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+
+/* ========================== */
+/*  CSS DO LANDING PAGE (NAV) */
+/* ========================== */
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  min-height: 80vh;
+  padding: 30px;
+  gap: 30px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 200px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ccc;
+  height: fit-content;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #003366;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.container1 {
+  flex-grow: 1;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  padding: 40px;
+  min-height: 400px;
+}
