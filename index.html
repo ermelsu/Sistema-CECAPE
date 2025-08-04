@@ -3,73 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pedido de Almoxarifado</title>
+  <title>Login - Almoxarifado</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Logo" />
-    <span>Sistema de Pedidos - Almoxarifado</span>
+    <div class="header-content">
+      <img src="LOGO_CECAPE.png" alt="Logo CECAPE" class="logo" />
+      <h1>Sistema de Pedidos - Almoxarifado</h1>
+    </div>
   </header>
 
   <main>
-    <div class="form-container">
-      <h2>Formulário de Pedido</h2>
-      <form id="pedidoForm">
-        <label for="nome">Nome do Solicitante:</label>
-        <input type="text" id="nome" name="nome" required />
+    <div class="login-container">
+      <h2>Acesso Restrito</h2>
+      <form id="loginForm">
+        <label for="usuario">Usuário:</label>
+        <input type="text" id="usuario" name="usuario" required />
 
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required />
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required />
 
-        <label for="setor">Setor:</label>
-        <select id="setor" name="setor" required>
-          <option value="">Selecione o setor</option>
-          <option value="Setor 1">Setor 1</option>
-          <option value="Setor 2">Setor 2</option>
-          <option value="Setor 3">Setor 3</option>
-          <option value="Setor 4">Setor 4</option>
-          <option value="Setor 5">Setor 5</option>
-          <option value="Setor 6">Setor 6</option>
-          <option value="Setor 7">Setor 7</option>
-          <option value="Setor 8">Setor 8</option>
-          <option value="Setor 9">Setor 9</option>
-          <option value="Setor 10">Setor 10</option>
-        </select>
-
-        <label for="data-prevista">Data Prevista para Uso:</label>
-        <input type="date" id="data-prevista" name="data-prevista" required />
-
-        <h3>Produtos Solicitados</h3>
-        <table id="produtos">
-          <thead>
-            <tr>
-              <th>Código</th>
-              <th>Descrição</th>
-              <th>Qtd</th>
-              <th>Ação</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="text" name="codigo[]" required /></td>
-              <td><input type="text" name="descricao[]" required /></td>
-              <td><input type="number" name="quantidade[]" required /></td>
-              <td><button type="button" onclick="removerLinha(this)">Remover</button></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <button type="button" class="btn add" onclick="adicionarLinha()">+ Adicionar Produto</button>
-        <button type="submit" class="btn">Enviar Pedido</button>
+        <button type="submit">Entrar</button>
+        <p id="loginError" style="color: red; display: none;">Erro, verifique suas credenciais.</p>
       </form>
+      <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+          const usuario = document.getElementById('usuario').value;
+          const senha = document.getElementById('senha').value;
+          if (usuario === 'emerson' && senha === '12345') {
+        window.location.href = 'landingpage.html';
+          } else {
+        document.getElementById('loginError').style.display = 'block';
+          }
+        });
+      </script>
     </div>
   </main>
 
   <footer>
-    © 2025 Almoxarifado CECAPE - Todos os direitos reservados.
+    <p>© 2025 Almoxarifado CECAPE - Todos os direitos reservados.</p>
   </footer>
-
-  <script src="form.js"></script>
 </body>
 </html>

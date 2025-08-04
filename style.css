@@ -48,6 +48,12 @@ header {
   font-size: 18px;
 }
 
+header img {
+  max-width: 120px;
+  height: auto;
+  display: block;
+}
+
 /* Rodapé */
 footer {
   background-color: #003366;
