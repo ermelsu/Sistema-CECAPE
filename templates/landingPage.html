@@ -5,20 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Landing Page - Almoxarifado</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <header>
+  <header class="header">
     <img src="{{ url_for('static', filename='img/LOGO_CECAPE.png') }}" alt="Logo CECAPE">
-    <span>Sistema de Pedidos - Almoxarifado</span>
+    <h1>Sistema de Pedidos - Almoxarifado</h1>
   </header>
 
   <main class="main-layout">
     <nav class="sidebar">
-        <a href="{{ url_for('landing') }}">Início</a>
-        <a href="{{ url_for('solicitacoes') }}">Solicitações</a>
-        <a href="{{ url_for('produtos') }}">Produtos</a>
-        <a href="{{ url_for('logout') }}">Sair</a>
-    </nav>
+      <a href="{{ url_for('landing') }}">
+        <i class="fa-solid fa-house"></i> Início
+      </a>
+      <a href="{{ url_for('solicitacoes') }}" class="active">
+        <i class="fa-solid fa-file-pen"></i> Solicitações
+      </a>
+      <a href="{{ url_for('produtos') }}">
+        <i class="fa-solid fa-box-open"></i> Produtos
+      </a>
+      <a href="{{ url_for('logout') }}">
+       <i class="fa-solid fa-right-from-bracket"></i> Sair
+      </a>
+</nav>
 
   <!-- /* ========================== */ -->
     <div class="container1">

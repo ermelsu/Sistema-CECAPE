@@ -49,6 +49,32 @@ def produtos():
 def logout():
     session.clear()
     return redirect('/')
+# users
+@app.route('/usuarios')
+def usuarios():
+    conn = sqlite3.connect('database/usuarios.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, nome, usuario, senha, tipo FROM usuarios")
+    usuarios = cursor.fetchall()
+    conn.close()
+    return render_template('usuarios.html', usuarios=usuarios)
+
+@app.route('/deletar_usuario/<int:usuario_id>', methods=['POST'])
+def deletar_usuario(usuario_id):
+    conn = sqlite3.connect('database/usuarios.db')
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM usuarios WHERE id = ?", (usuario_id,))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('usuarios'))
+
+
+
+
+
+
+
+
 
 
 if __name__ == '__main__':

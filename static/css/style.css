@@ -1,75 +1,57 @@
-
-/* ========================== */
-/*       CSS DO LOGIN         */
-/* ========================== */
-/* CSS DO LOGIN */
-
-
-/* Reset de margens e bordas */
-
-/* Reset de margens e bordas */
+/* ========================= */
+/* ZONA 1: RESET E BASE */
+/* ========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Corpo com altura total */
 html, body {
   height: 100%;
-  background-color: #f4f4f4;
   font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
   display: flex;
   flex-direction: column;
 }
 
-/* Cabeçalho */
-header {
-  background-color: #003366;
-  color: white;
-  padding: 30px 600px;
-  display: flex;  
-  align-items: center;
-  justify-content: center;
+h1, h2, h3, p {
+  margin: 0;
 }
 
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* centraliza logo + texto */
-  gap: 10px;
-}
-
-.header-content .logo {
-  height: 40px;
-}
-
-.header-content h1 {
-  font-size: 18px;
-}
-
-header img {
-  max-width: 120px;
-  height: auto;
-  display: block;
-}
-
-/* Rodapé */
-footer {
+/* ========================= */
+/* ZONA 2: HEADER E FOOTER */
+/* ========================= */
+header, footer {
   background-color: #003366;
   color: white;
   text-align: center;
   padding: 10px 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; /* espaço entre logo e título */
+}
+
+header img {
+  height: 40px;
+}
+
+footer {
   margin-top: auto;
 }
 
-/* Container de login centralizado */
+/* ========================= */
+/* ZONA 3: LOGIN PAGE */
+/* ========================= */
 main {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
 }
 
 .login-container {
@@ -77,9 +59,9 @@ main {
   padding: 40px 60px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  min-width: 400px; /* aumento aqui */
-  max-width: 500px;
-  width: 100%;
+  min-width: 300px;
+  max-width: 400px;
+  width: 90%;
 }
 
 .login-container h2 {
@@ -116,45 +98,93 @@ main {
   background-color: #002855;
 }
 
-/* ========================== */
-/*    CSS DO INDEX (FORM)     */
-/* ========================== */
-.container {
+/* ========================= */
+/* ZONA 4: LAYOUT PRINCIPAL (SIDEBAR + CONTEÚDO) */
+/* ========================= */
+/* ========================= */
+/* ZONA 4: LAYOUT PRINCIPAL (SIDEBAR + CONTEÚDO) */
+/* ========================= */
+.main-layout {
+  display: flex;
+  flex: 1;
+  min-height: calc(100vh - 120px); /* ocupa altura total entre header e footer */
+  background-color: #f4f6f9;
+  padding: 20px;
+  gap: 20px;
+  align-items: stretch; /* força os filhos a ocuparem a mesma altura */
+}
+
+.sidebar {
   background-color: #fff;
-  padding: 40px;
-  margin: 40px auto;
-  max-width: 800px;
+  padding: 20px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+
+  /* Mantém a altura igual à do container principal */
+  height: auto;
+  align-self: stretch;
+}
+
+.sidebar a {
+  color: #003366;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* espaço entre ícone e texto */
+}
+
+.sidebar a i {
+  font-size: 16px;
+}
+
+
+.sidebar a.active,
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.sidebar a:last-child {
+  margin-top: auto;
+}
+
+.container1 {
+  flex-grow: 1;
+  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 0 10px #ccc;
+  padding: 30px;
+  min-height: 100%; /* garante que acompanhe a sidebar */
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
 }
 
-h2 {
-  margin-top: 0;
-}
 
+/* ========================= */
+/* ZONA 5: FORMULÁRIOS E TABELAS */
+/* ========================= */
 label {
   display: block;
   margin-top: 15px;
   font-weight: bold;
 }
 
-input, select {
+input, select, button {
   width: 100%;
-  height: 50px;
-  padding: 8px;
-  margin-top: 5px;
-  box-sizing: border-box;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 4px;
   border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
 button {
-  margin-top: 20px;
-  padding: 10px 15px;
   background-color: #003366;
   color: white;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -178,76 +208,69 @@ th {
   background-color: #f2f2f2;
 }
 
-
-/* ========================== */
-/*  CSS DO LANDING PAGE (NAV) */
-/* ========================== */
-.main-layout {
-  display: flex;
-  flex-direction: row;
-  min-height: 80vh;
-  padding: 30px;
-  gap: 30px;
+/* Tabela de pedidos */
+.tabela-pedidos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
 }
 
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #ccc;
-  height: 95%;
-  padding: 40px;
-  min-height: 400px;
-  min-width: 200px;
+.tabela-pedidos th, .tabela-pedidos td {
+  border: 1px solid #e0e0e0;
+  padding: 10px 8px;
+  text-align: left;
 }
 
-.sidebar a {
-  text-decoration: none;
-  color: #003366;
-  font-weight: bold;
-  font-size: 1.1rem;
+.tabela-pedidos th {
+  background: #f3f3f3;
 }
 
-.sidebar a:hover {
-  text-decoration: underline;
+.status {
+  padding: 4px 12px;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.95em;
 }
 
-.sidebar a:last-child {
-  margin-top: auto;
+.status.concluido {
+  background: #2e7d32;
 }
 
-.container1 {
-  flex-grow: 1;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #ccc;
-  padding: 40px;
-  min-height: 700px;
-  min-width: 200px;
+/* ========================= */
+/* ZONA 6: RESPONSIVIDADE */
+/* ========================= */
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .container1 {
+    padding: 20px;
+    max-width: 95%;
+  }
+
+  .login-container {
+    padding: 20px;
+  }
 }
 
-/* ========================== */
-        .tabela-pedidos {
-          width: 100%;
-          border-collapse: collapse;
-          margin-top: 16px;
-        }
-        .tabela-pedidos th, .tabela-pedidos td {
-          border: 1px solid #e0e0e0;
-          padding: 10px 8px;
-          text-align: left;
-        }
-        .tabela-pedidos th {
-          background: #f3f3f3;
-        }
-        .status {
-          padding: 4px 12px;
-          border-radius: 12px;
-          color: #fff;
-          font-size: 0.95em;
-        }
-        .status.concluido {
-          background: #2e7d32;
-        }
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 18px;
+  }
+
+  .sidebar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  table, .tabela-pedidos {
+    font-size: 0.85em;
+  }
+}
