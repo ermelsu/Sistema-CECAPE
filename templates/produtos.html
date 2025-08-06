@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page - Almoxarifado</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header>
+    <img src="{{ url_for('static', filename='img/LOGO_CECAPE.png') }}" alt="Logo CECAPE">
+    <span>Sistema de Pedidos - Almoxarifado</span>
+  </header>
+
+  <main class="main-layout">
+    <nav class="sidebar">
+      <a href="{{ url_for('landing') }}">Início</a>
+      <a href="{{ url_for('solicitacoes') }}">Solicitações</a>
+      <a href="{{ url_for('produtos') }}">Produtos</a>
+      <a href="{{ url_for('logout') }}">Sair</a>
+    </nav>
+    <div class="container1">
+      PÁGINA AINDA EM DESENVOLVIMENTO
+      <p>Em breve, você poderá acessar informações e funcionalidades adicionais aqui.</p>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Almoxarifado CECAPE - Todos os direitos reservados.
+  </footer>
+</body>
+</html>

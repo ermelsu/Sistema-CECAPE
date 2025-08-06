@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page - Almoxarifado</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header>
+    <img src="{{ url_for('static', filename='img/LOGO_CECAPE.png') }}" alt="Logo CECAPE">
+    <span>Sistema de Pedidos - Almoxarifado</span>
+  </header>
+
+  <main class="main-layout">
+    <nav class="sidebar">
+        <a href="{{ url_for('landing') }}">Início</a>
+        <a href="{{ url_for('solicitacoes') }}">Solicitações</a>
+        <a href="{{ url_for('produtos') }}">Produtos</a>
+        <a href="{{ url_for('logout') }}">Sair</a>
+    </nav>
+
+  <!-- /* ========================== */ -->
+    <div class="container1">
+      <h2>Pedidos Concluídos Recentes</h2>
+      <table class="tabela-pedidos">
+        <thead>
+          <tr>
+        <th>Nº Pedido</th>
+        <th>Nome</th>
+        <th>Setor</th>
+        <th>Telefone</th>
+        <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+        <td>1023</td>
+        <td>Maria Silva</td>
+        <td>Financeiro</td>
+        <td>(11) 99999-1234</td>
+        <td><span class="status concluido">Concluído</span></td>
+          </tr>
+          <tr>
+        <td>1022</td>
+        <td>João Souza</td>
+        <td>RH</td>
+        <td>(11) 98888-5678</td>
+        <td><span class="status concluido">Concluído</span></td>
+          </tr>
+          <tr>
+        <td>1021</td>
+        <td>Ana Lima</td>
+        <td>TI</td>
+        <td>(11) 97777-4321</td>
+        <td><span class="status concluido">Concluído</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Almoxarifado CECAPE - Todos os direitos reservados.
+  </footer>
+</body>
+</html>
