@@ -2,66 +2,92 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gerenciar Usuários - Almoxarifado</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usuários - Almoxarifado</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <!-- HEADER -->
+
+  <!-- ZONA 1: Cabeçalho -->
   <header class="header">
     <img src="{{ url_for('static', filename='img/LOGO_CECAPE.png') }}" alt="Logo CECAPE">
     <h1>Sistema de Pedidos - Almoxarifado</h1>
   </header>
 
-  <!-- LAYOUT PRINCIPAL -->
+  <!-- ZONA 2: Conteúdo principal com barra lateral -->
   <main class="main-layout">
-    <!-- SIDEBAR -->
     <nav class="sidebar">
-      <a href="{{ url_for('landing') }}"><i class="fa-solid fa-house"></i> Início</a>
-      <a href="{{ url_for('solicitacoes') }}"><i class="fa-solid fa-file-pen"></i> Solicitações</a>
-      <a href="{{ url_for('produtos') }}"><i class="fa-solid fa-box-open"></i> Produtos</a>
-      <a href="{{ url_for('cadastro') }}"><i class="fa-solid fa-user-plus"></i> Cadastrar Usuário</a>
-      <a href="{{ url_for('usuarios') }}" class="active"><i class="fa-solid fa-users"></i> Usuários</a>
-      <a href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+      <a href="{{ url_for('landing') }}"><i class="fas fa-home"></i> Início</a>
+      <a href="{{ url_for('solicitacoes') }}"><i class="fas fa-file-alt"></i> Solicitações</a>
+      <a href="{{ url_for('produtos') }}"><i class="fas fa-box"></i> Produtos</a>
+      <a href="{{ url_for('usuarios') }}" class="active"><i class="fas fa-users"></i> Usuários</a>
+      <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Sair</a>
     </nav>
 
-    <!-- CONTEÚDO PRINCIPAL -->
     <div class="container1">
-      <h2><i class="fa-solid fa-users"></i> Usuários Cadastrados</h2>
+      <!-- ZONA 3: Formulário de Cadastro/Edição -->
+      <div class="form-container">
+        <h2>{{ 'Editar Usuário' if editar else 'Cadastrar Novo Usuário' }}</h2>
+        <form method="POST" action="{{ url_for('usuarios') }}">
+          {% if editar %}
+            <input type="hidden" name="editar_id" value="{{ editar.id }}">
+          {% endif %}
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" value="{{ editar.nome if editar else '' }}" required>
 
-      <table class="tabela-pedidos">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Usuário</th>
-            <th>Tipo</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for u in usuarios %}
-          <tr>
-            <td>{{ u[0] }}</td>
-            <td>{{ u[1] }}</td>
-            <td>{{ u[2] }}</td>
-            <td>{{ u[4] if u|length > 4 else u[3] }}</td>
-            <td>
-              <form action="{{ url_for('deletar_usuario', usuario_id=u[0]) }}" method="POST" style="display:inline;">
-                <button type="submit" title="Excluir" style="background:#c0392b; color:white; padding:6px 10px; border:none; border-radius:4px; cursor:pointer;">
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              </form>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+          <label for="usuario">Usuário:</label>
+          <input type="text" id="usuario" name="usuario" value="{{ editar.usuario if editar else '' }}" required>
+
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" name="senha" required>
+
+          <label for="tipo">Tipo:</label>
+          <select id="tipo" name="tipo" required>
+            <option value="user" {% if editar and editar.tipo == 'user' %}selected{% endif %}>Usuário</option>
+            <option value="admin" {% if editar and editar.tipo == 'admin' %}selected{% endif %}>Administrador</option>
+          </select>
+
+          <button type="submit">{{ 'Atualizar' if editar else 'Cadastrar' }}</button>
+        </form>
+      </div>
+
+      <!-- ZONA 4: Lista de usuários -->
+      <div style="margin-top: 40px;">
+        <h2><i class="fas fa-users"></i> Usuários Cadastrados</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Usuário</th>
+              <th>Tipo</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for u in usuarios %}
+              <tr>
+                <td>{{ u.id }}</td>
+                <td>{{ u.nome }}</td>
+                <td>{{ u.usuario }}</td>
+                <td>{{ u.tipo }}</td>
+                <td style="display: flex; gap: 10px;">
+                  <a href="{{ url_for('usuarios', editar=u.id) }}" class="btn-icon yellow"><i class="fas fa-pen-to-square"></i></a>
+                  <form method="POST" action="{{ url_for('usuarios') }}" style="margin: 0;">
+                    <input type="hidden" name="deletar_id" value="{{ u.id }}">
+                    <button type="submit" class="btn-icon red"><i class="fas fa-trash"></i></button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
 
-  <!-- FOOTER -->
+  <!-- ZONA 5: Rodapé -->
   <footer>
     © 2025 Almoxarifado CECAPE - Todos os direitos reservados.
   </footer>
