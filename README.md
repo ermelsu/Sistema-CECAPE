@@ -5,8 +5,8 @@ O **GECAPE** (Gestão de Estoque do CECAPE) é um sistema completo para **requis
 
 ## 🚀 Tecnologias Utilizadas
 
-- **Python 3.11**
-- **JavaScript**
+- **Python 3.11** - linguagem principal utilizada para a lógica de negócio e integração com o backend.
+- **JavaScript** - responsável pela interatividade e comportamento dinâmico da interface.
 - **Flask** – Framework web simples e poderoso
 - **SQLite** – Banco de dados local e leve
 - **Heroku** – Deploy automático e escalável
