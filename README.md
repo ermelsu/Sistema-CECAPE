@@ -6,11 +6,9 @@ O **GECAPE** (Gestão de Estoque do CECAPE) é um sistema completo para **requis
 ## 🚀 Tecnologias Utilizadas
 
 - **Python 3.11**
+- **JavaScript**
 - **Flask** – Framework web simples e poderoso
-- **Jinja2** – Templates dinâmicos HTML
 - **SQLite** – Banco de dados local e leve
-- **Bootstrap + CSS customizado** – Interface amigável e responsiva
-- **Font Awesome** – Ícones modernos
 - **Heroku** – Deploy automático e escalável
 
 ## 📦 Funcionalidades
