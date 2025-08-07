@@ -1,8 +1,3 @@
-from flask import Flask
-
-app = Flask(__name__)
-
-
 # ZONA 0: Conexão com o banco
 import sqlite3
 
