@@ -1,3 +1,8 @@
+from flask import Flask
+
+app = Flask(__name__)
+
+
 # ZONA 0: Conexão com o banco
 import sqlite3
 
@@ -139,4 +144,4 @@ def usuarios():
 # ZONA 5: EXECUÇÃO
 # ========================================
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
